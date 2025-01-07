@@ -23,6 +23,6 @@ package Baekjoon;
 
 public class problem_1158 {
     public static void main(String[] args){
-            System.out.println("호출할 함수 번호를 입력해주세요");
+            System.out.println("호출할 함수 번호를 입력해주세요2");
         }
 }
