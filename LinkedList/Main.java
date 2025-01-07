@@ -125,6 +125,10 @@ class LinkedList<T> {
 
         return current.data;
     }
+
+    public void initLinkedList(){
+        insertLast(12);
+    }
 }
 
 public class Main {
