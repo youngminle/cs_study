@@ -31,6 +31,7 @@ class LinkedList<T> {
             throw new IndexOutOfBoundsException("인덱스값이 연결리스트에 크기에 벗어났습니다");
         }
 
+        //삽입하려는 노드 생성
         Node<T> newNode = new Node<>(data);
 
         if(index == 0){
