@@ -21,6 +21,8 @@
  */
 package Baekjoon;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 class Node<T>{
@@ -71,28 +73,103 @@ class LinkedList<T>{
     public void printAll(){
         Node<T> current = head;
 
-        while (current != null) {
+        String printString = "";
 
-            System.out.println(current.data);
+        while (current != null) {
+            printString += current.data + ", ";
             current = current.next;
-            
         }
+
+        System.out.println(printString);
     }
 
     //연결리스트 인덱스 기준 삭제
-    public void removeAt(int index){
+    public Node<T> removeAt(int index){
         Node<T> current = head;
+        Node<T> delNode = null;
         
         if(index == 0){
             //첫번째 노드를 삭제할때
+            delNode = head;
             head = head.next;
         }else{
             //그 외
-            for(int i = 0; i< size-1; i++){
+            for(int i = 0; i < index -1; i++){
                 current = current.next;
             }
-            current = current.next.next;
+            delNode = current.next;
+            current.next = current.next.next;
         }
+
+        size--;
+        return delNode;
+    }
+
+    //연결리스트 크기 획득
+    public int getSize(){
+        return size;
+    }
+
+    public void removeCycle(int n){
+        Node<T> current = head;
+        
+        int index = 1;
+
+        //연결리스트 끝까지 가서 연결리스트 마지막 - 처음 연결하기
+        for(int i = 0; i< size-1; i++){
+            current = current.next;
+        }
+
+        current.next = head;
+
+        //처음으로 돌리기       
+        current = head;
+
+        List<Integer> result = new ArrayList<>();
+        Node<T> prev = null;
+
+        String printString = "";
+        while (result.size() < n) {
+            // k-1번 이동
+            for (int i = 0; i < n - 1; i++) {
+                prev = current;
+                current = current.next;
+            }
+            
+            // k번째 사람 제거
+            result.add((Integer)current.data);
+            
+            // 리스트에서 현재 노드 제거
+            prev.next = current.next;
+            current = current.next;
+        }
+
+        System.out.println(result);
+
+        /*
+        while (size >= 1) {
+            
+            
+            if(index == n){
+                printString += current.data + ", ";
+                current.next = current.next.next;
+                size--;
+                index = 1;
+            }
+
+            index++;
+
+
+        }
+ */
+
+
+        System.out.println(printString);
+
+
+        
+
+
     }
 }
 
@@ -126,18 +203,13 @@ public class problem_1158 {
 
         LinkedList<Integer> list = new LinkedList<>();
 
+        //연결리스트 생성
         for(int i = 1; i <= k; i++){
             list.insertLast(i);
         }
 
-        list.printAll();
 
-        
-
-        
-
-
-
-        
+        //삭제 진행 시작
+        list.removeCycle(n);
     }
 }
