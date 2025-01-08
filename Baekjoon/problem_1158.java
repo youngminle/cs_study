@@ -69,11 +69,20 @@ class LinkedList<T>{
 
     //연결리스트 전체 출력
     public void printAll(){
-        
+        Node<T> current = head;
+
+        while (current != null) {
+
+            System.out.println(current.data);
+            current = current.next;
+            
+        }
     }
 
     //연결리스트 인덱스 기준 삭제
-
+    public void removeAt(){
+        
+    }
 }
 
 public class problem_1158 {
@@ -104,9 +113,14 @@ public class problem_1158 {
             throw new IndexOutOfBoundsException("입력값은 5000보다 작아야합니다");
         }
 
-        for(int i = 0; i <= k; i++){
-            System.out.println(i);
+        LinkedList<Integer> list = new LinkedList<>();
+
+        for(int i = 1; i <= k; i++){
+            list.insertLast(i);
         }
+
+        list.printAll();
+
 
 
         
