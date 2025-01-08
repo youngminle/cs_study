@@ -80,8 +80,19 @@ class LinkedList<T>{
     }
 
     //연결리스트 인덱스 기준 삭제
-    public void removeAt(){
+    public void removeAt(int index){
+        Node<T> current = head;
         
+        if(index == 0){
+            //첫번째 노드를 삭제할때
+            head = head.next;
+        }else{
+            //그 외
+            for(int i = 0; i< size-1; i++){
+                current = current.next;
+            }
+            current = current.next.next;
+        }
     }
 }
 
@@ -120,6 +131,10 @@ public class problem_1158 {
         }
 
         list.printAll();
+
+        
+
+        
 
 
 
