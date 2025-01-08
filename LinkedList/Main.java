@@ -36,7 +36,7 @@ class LinkedList<T> {
 
         if(index == 0){
             //연결리스트에 가장 앞부분에 삽입하려고 할 때
-            newNode.next = head;
+            //newNode.next = head;
             head = newNode;
         }else{
             //연결리스트 가장 마지막 부분에 삽입하려고 할 때

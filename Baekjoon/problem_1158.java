@@ -21,8 +21,94 @@
  */
 package Baekjoon;
 
+import java.util.Scanner;
+
+class Node<T>{
+    T data;
+    Node<T> next;
+
+    public Node(T data){
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList<T>{
+    private Node<T> head;
+    private int size;
+
+    public LinkedList(){
+        this.head = null;
+        this.size = 0;
+    }
+
+    //연결리스트 마지막 삽입
+    public void insertLast(T data){
+        //삽입할 노드 생성
+        Node<T> newNode = new Node<>(data);
+
+        if(size == 0){
+            //연결리스트 처음 삽입할때
+            head = newNode;
+        }else{
+            //연결리스트 마지막 삽입
+            //연결리스트 첫번때 요소 확인
+            Node<T> current = head;
+
+            for(int i = 0; i < size-1; i++){
+                current = current.next;
+            }
+
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+
+        size ++;
+
+    }
+
+    //연결리스트 전체 출력
+    public void printAll(){
+        
+    }
+
+    //연결리스트 인덱스 기준 삭제
+
+}
+
 public class problem_1158 {
     public static void main(String[] args){
-            System.out.println("호출할 함수 번호를 입력해주세요2");
+        System.out.println("숫자를 입력하세요");
+        Scanner scanner = new Scanner(System.in);
+        String number = scanner.nextLine();
+        
+
+        String arr[] = number.split(" ");
+
+        if(arr.length != 2){
+            throw new IndexOutOfBoundsException("두개의 숫자를 띄어쓰기로 구분해 입력해주세요");
         }
+
+        int k = Integer.parseInt(arr[0]);
+        int n = Integer.parseInt(arr[1]);
+        
+        if(k <= 0){
+            throw new IndexOutOfBoundsException("입력값은 0보다 커야합니다");
+        }
+
+        if(k < n){
+            throw new IndexOutOfBoundsException("첫번째 입력값이 두번째 입력값보다 커야합니다");
+        }
+
+        if(k >= 5000){
+            throw new IndexOutOfBoundsException("입력값은 5000보다 작아야합니다");
+        }
+
+        for(int i = 0; i <= k; i++){
+            System.out.println(i);
+        }
+
+
+        
+    }
 }
