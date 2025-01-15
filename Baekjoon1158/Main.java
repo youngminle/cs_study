@@ -115,7 +115,13 @@ class LinkedList<T>{
     public void josephus(int n){
 
         Node<T> current = head;
-        Node<T> delNode = null;
+        Node<T> preNode = null;
+
+        for(int i = 0; size - 1 > i; i++){
+            current = current.next;
+        }
+        preNode = current;
+        current = head;
 
         int cnt = 1;
 
@@ -123,23 +129,24 @@ class LinkedList<T>{
 
         while (size >= 1) {
             
-            delNode = current;
-            current = current.next;
-            cnt++;
+
 
             if(cnt == n){
                 //삭제 진행
                 if(size == 1){
-                    printString += delNode.next.data;
+                    printString += preNode.next.data;
                 }else{
-                    printString += delNode.next.data + ", ";
+                    printString += preNode.next.data + ", ";
                     
                 }
                 
                 size--;
                 cnt = 0;
-                delNode.next = current.next;
+                preNode.next = current.next;
             }   
+            preNode = current;
+            current = current.next;
+            cnt++;
         }
 
         printString += ">";
@@ -193,8 +200,6 @@ class LinkedList<T>{
     public int getSize(){
         return size;
     }
-
-    
 }
 
 public class Main {
