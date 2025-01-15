@@ -73,7 +73,6 @@ class LinkedList<T> {
     public void clear(){
         head = null;
         size = 0;
-
     }
 
     //인덱스 삭제
