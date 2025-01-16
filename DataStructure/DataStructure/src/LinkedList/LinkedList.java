@@ -11,7 +11,7 @@ class Node<T> {
 }
 
 
-class LinkedList<T> {
+public class LinkedList<T> {
     private Node<T> head;  // 리스트의 시작 노드
     private int size;      // 리스트의 크기
 
@@ -37,7 +37,7 @@ class LinkedList<T> {
 
         if(index == 0){
             //연결리스트에 가장 앞부분에 삽입하려고 할 때
-            //newNode.next = head;
+            newNode.next = head;
             head = newNode;
         }else{
             //연결리스트 가장 마지막 부분에 삽입하려고 할 때
@@ -77,7 +77,7 @@ class LinkedList<T> {
     }
 
     //인덱스 삭제
-    public void deleteAt(int index){
+    public T deleteAt(int index){
         //연결리스트의 크기보다 크거나 
         //음수의 위치에 삽입하려고 할때 
         if(index < 0){
@@ -90,11 +90,13 @@ class LinkedList<T> {
         
         //연결리스트의 첫 머리 획득
         Node<T> current = head;
+        T delData;
 
         if(index == 0){
             //첫번째 노드를 제거
             
             //첫 노드를 다음 노드를 가르키도록
+            delData = head.data;
             head = head.next;
             
         }else{
@@ -102,11 +104,14 @@ class LinkedList<T> {
             for(int i = 0; i < index -1; i++){
                 current = current.next;
             }
+            delData = current.next.data;
             current.next = current.next.next;
         }
 
         //연결리스트 크기 한개 감소
         size--;
+
+        return delData;
     }
 
     //마지막 삭제
@@ -125,5 +130,9 @@ class LinkedList<T> {
         }
 
         return current.data;
+    }
+
+    public int getSize(){
+        return size;
     }
 }
