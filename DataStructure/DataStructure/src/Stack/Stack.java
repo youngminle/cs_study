@@ -2,7 +2,7 @@ package Stack;
 
 import LinkedList.LinkedList;
 
-public class Stack<T> extends LinkedList{
+public class Stack<T>{
     LinkedList<T> list = null;
     
     public Stack(){
@@ -31,7 +31,6 @@ public class Stack<T> extends LinkedList{
 
     //비어있는지 확인
     public boolean isEmpty(){
-        
         return (list.getSize() == 0);
     }
 

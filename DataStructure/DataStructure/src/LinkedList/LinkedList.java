@@ -122,6 +122,16 @@ public class LinkedList<T> {
 
     //해당 인덱스 읽기
     public T getNodeAt(int index){
+        //연결리스트의 크기보다 크거나 
+        //음수의 위치에 삽입하려고 할때 
+        if(index < 0){
+            throw new IndexOutOfBoundsException("인덱스값은 음수가 될 수 없습니다");
+        }
+
+        if(index > size){
+            throw new IndexOutOfBoundsException("인덱스값이 연결리스트에 크기에 벗어났습니다");
+        }
+
         //연결리스트의 첫 머리 획득
         Node<T> current = head;
 
