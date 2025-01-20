@@ -33,10 +33,4 @@ public class Stack<T>{
     public boolean isEmpty(){
         return (list.getSize() == 0);
     }
-
-    
-
-
-
-
 }
